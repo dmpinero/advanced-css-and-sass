@@ -1,0 +1,147 @@
+/*
+COLORS:
+
+Light green: #7ed56f
+Medium green: #55c57a
+Dark green: #28b485
+
+*/
+
+* {
+    /* Creación de reset para hacer la visualización idéntica en todos los navegadores */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Creación de reset para hacer la visualización idéntica en todos los navegadores */
+}
+
+body {
+    /* Definición de propiedades de fuentes */
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #777;
+    padding: 30px;
+    /* Definición de propiedades de fuentes */
+}
+
+.header {
+    height: 95vh; /* 95% del alto */
+    background-image: linear-gradient(
+        to right bottom, /* Gradiente de derecha a izquierda y de arriba hacia abajo */
+        rgba(126, 213, 111, 0.8), /* Color inicial del gradiente con 80% de opacidad */
+       rgba(40, 180, 131, 0.8)), /* Color final del gradiente con 80% de opacidad */
+    url(../img/hero.jpg); /* Imagen de fondo */
+    background-size: cover; /* Imagen de fondo con 100% del ancho */
+    background-position: top; /* Imagen de fondo en el que siempre se visualiza la parte de arriba, aunque se vaya haciendo más pequeño el viewport */
+
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); /* Polígono dese esquina superior izquierda a esquina superior derecha, esquina inferior derecha y esquina inferior izquierda. El primer parámetro indica la x y el segundo la y */
+
+    position: relative;
+}
+
+.logo-box {
+    position: absolute; /* Posición absoluta respecto al elemento padre que lo contiene (ver index.html) */
+    top: 40px;
+    left: 40px;
+}
+
+.logo {
+    height: 35px; /* Alto de la imagen. El ancho lo calcula automáticamente el navegador */
+}
+
+.text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Alinear al medio */
+    text-align: center;
+}
+
+.heading-primary {
+    color: #FFF;
+    text-transform: uppercase;
+    backface-visibility: hidden; /* Evitar el pequeño desplazamiento hacia abajo del texto al finalizar la animación */
+    margin-bottom: 60px;
+}
+
+.heading-primary-main {
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft; /* Animación a ejecutar */
+    animation-duration: 1s; /* Duración de la animación */
+    animation-timing-function: ease-out;
+    /* animation-iteration-count: 3; */ /* Número de veces que se ejecuta la animación */
+    /*animation-delay: 3s; */ /* Tiempo de espera hasta empezar la animación */
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+
+    animation: moveInRight 1s ease-out; /* Animación a ejecutar */
+}
+
+@keyframes moveInLeft {
+    0% {
+        opacity: 0; /* Al principio es transparente */
+        transform: translateX(-100px) /* Comienza 100 pixels a la izquierda de su ubicación original */
+    }
+
+    80% {
+        transform: translateX(10px); /* Al ejecutar el 80% de la transformación está 10 puntos a la derecha de su ubicación final */
+    }
+
+    100% {
+        opacity: 1; /* Al final se visualiza con opacidad del 100% */
+        transform: translate(0); /* Al final está en su posición destino */
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0; /* Al principio es transparente */
+        transform: translateX(100px); /* Comienza 100 pixels a la derecha de su ubicación original */
+    }
+
+    80% {
+        transform: translateX(-10px); /* Al ejecutar el 80% de la transformación está 10 puntos a la izquierda de su ubicación final */
+    }
+
+    100% {
+        opacity: 1; /* Al final se visualiza con opacidad del 100% */
+        transform: translate(0); /* Al final está en su posición destino */
+    }
+}
+
+.btn:link, 
+.btn:visited
+{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block; /* El elemento se comporta como de tipo bloque, respetando propiedades del tipo inline, como ancho y alto */
+    border-radius: 100px; /* Borde redondeado del botón */
+    transition: all .2; /* Se ejecuta la transición desde este estado inicial a cualquier estado final (hover, etc.) en 0.2 segundos */
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.2); /* 0 pixels de offset en la dirección x, 10 pixels de sombra hacia abajo (dirección y), 20 pixels de blur y 20% de opacidad */
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2); /* 0 pixels de offset en la dirección x, 5 pixels de sombra hacia abajo (dirección y), 10 pixels de blur y 20% de opacidad */
+}
+
+.btn-white {
+    background-color: #fff;
+    color:#777;
+}
